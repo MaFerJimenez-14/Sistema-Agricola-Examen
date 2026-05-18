@@ -1,0 +1,174 @@
+.root {
+    -fx-background-color: #f0f7f4;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* ── BOTONES ── */
+.btn-verde {
+    -fx-background-color: #2d6a4f;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 14;
+    -fx-cursor: hand;
+}
+
+.btn-verde:hover {
+    -fx-background-color: #1b4332;
+}
+
+.btn-amarillo {
+    -fx-background-color: #f4a261;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 14;
+    -fx-cursor: hand;
+}
+
+.btn-amarillo:hover {
+    -fx-background-color: #e76f51;
+}
+
+.btn-rojo {
+    -fx-background-color: #e63946;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 14;
+    -fx-cursor: hand;
+}
+
+.btn-rojo:hover {
+    -fx-background-color: #c1121f;
+}
+
+.btn-gris {
+    -fx-background-color: #adb5bd;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 14;
+    -fx-cursor: hand;
+}
+
+.btn-gris:hover {
+    -fx-background-color: #6c757d;
+}
+
+/* ── ENCABEZADO ── */
+.encabezado {
+    -fx-background-color: #2d6a4f;
+    -fx-padding: 15;
+    -fx-background-radius: 10;
+}
+
+.encabezado-titulo {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.encabezado-subtitulo {
+    -fx-font-size: 12px;
+    -fx-text-fill: #d8f3dc;
+}
+
+/* ── TARJETA ── */
+.tarjeta {
+    -fx-background-color: white;
+    -fx-padding: 15;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0, 0, 2);
+}
+
+/* ── CAMPOS ── */
+.campo {
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #b7e4c7;
+    -fx-padding: 6;
+}
+
+/* ── ETIQUETAS ── */
+.label-titulo {
+    -fx-font-weight: bold;
+    -fx-text-fill: #1b4332;
+}
+
+.label-seccion {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.label-exito {
+    -fx-text-fill: #2d6a4f;
+    -fx-font-weight: bold;
+}
+
+.label-error {
+    -fx-text-fill: #e63946;
+    -fx-font-weight: bold;
+}
+
+/* ── FONDO GENERAL ── */
+.fondo {
+    -fx-background-color: #f0f7f4;
+}
+
+/* ── TARJETA INFO INFORME ── */
+.tarjeta-info {
+    -fx-background-color: #d8f3dc;
+    -fx-padding: 15;
+    -fx-background-radius: 8;
+}
+
+/* ── TABLA ── */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #b7e4c7;
+}
+
+.table-view .column-header {
+    -fx-background-color: #2d6a4f;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #b7e4c7;
+}
+
+/* ── TABS ── */
+.tab-pane .tab {
+    -fx-background-color: #c8dbc8;
+    -fx-padding: 8 16;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #2d6a4f;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* ── COMBOBOX ── */
+.combo-box {
+    -fx-border-color: #b7e4c7;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+/* ── SCROLL PANE ── */
+.scroll-pane {
+    -fx-background-color: #f0f7f4;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: #f0f7f4;
+}
