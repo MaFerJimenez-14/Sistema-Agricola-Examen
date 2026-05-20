@@ -3,7 +3,6 @@
     -fx-font-family: "Segoe UI", sans-serif;
 }
 
-/* ── BOTONES ── */
 .btn-verde {
     -fx-background-color: #2d6a4f;
     -fx-text-fill: white;
@@ -56,7 +55,21 @@
     -fx-background-color: #6c757d;
 }
 
-/* ── ENCABEZADO ── */
+.btn-inicio {
+    -fx-background-color: white;
+    -fx-text-fill: #2d6a4f;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 30;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.btn-inicio:hover {
+    -fx-background-color: #d8f3dc;
+    -fx-text-fill: #1b4332;
+}
+
 .encabezado {
     -fx-background-color: #2d6a4f;
     -fx-padding: 15;
@@ -74,7 +87,30 @@
     -fx-text-fill: #d8f3dc;
 }
 
-/* ── TARJETA ── */
+.fondo-inicio {
+    -fx-background-color: #2d6a4f;
+}
+
+.inicio-titulo {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.inicio-subtitulo {
+    -fx-font-size: 16px;
+    -fx-text-fill: #d8f3dc;
+}
+
+.inicio-anio {
+    -fx-font-size: 14px;
+    -fx-text-fill: #d8f3dc;
+}
+
+.inicio-separador {
+    -fx-text-fill: #52b788;
+}
+
 .tarjeta {
     -fx-background-color: white;
     -fx-padding: 15;
@@ -82,7 +118,12 @@
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0, 0, 2);
 }
 
-/* ── CAMPOS ── */
+.tarjeta-info {
+    -fx-background-color: #d8f3dc;
+    -fx-padding: 15;
+    -fx-background-radius: 8;
+}
+
 .campo {
     -fx-background-radius: 5;
     -fx-border-radius: 5;
@@ -90,7 +131,6 @@
     -fx-padding: 6;
 }
 
-/* ── ETIQUETAS ── */
 .label-titulo {
     -fx-font-weight: bold;
     -fx-text-fill: #1b4332;
@@ -111,19 +151,10 @@
     -fx-font-weight: bold;
 }
 
-/* ── FONDO GENERAL ── */
 .fondo {
     -fx-background-color: #f0f7f4;
 }
 
-/* ── TARJETA INFO INFORME ── */
-.tarjeta-info {
-    -fx-background-color: #d8f3dc;
-    -fx-padding: 15;
-    -fx-background-radius: 8;
-}
-
-/* ── TABLA ── */
 .table-view {
     -fx-background-color: white;
     -fx-border-color: #b7e4c7;
@@ -142,7 +173,6 @@
     -fx-background-color: #b7e4c7;
 }
 
-/* ── TABS ── */
 .tab-pane .tab {
     -fx-background-color: #c8dbc8;
     -fx-padding: 8 16;
@@ -157,18 +187,24 @@
     -fx-font-weight: bold;
 }
 
-/* ── COMBOBOX ── */
 .combo-box {
     -fx-border-color: #b7e4c7;
     -fx-border-radius: 5;
     -fx-background-radius: 5;
 }
 
-/* ── SCROLL PANE ── */
 .scroll-pane {
     -fx-background-color: #f0f7f4;
 }
 
 .scroll-pane > .viewport {
     -fx-background-color: #f0f7f4;
+}
+
+.area-informe {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 12px;
+    -fx-border-color: #b7e4c7;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
 }

@@ -1,10 +1,17 @@
 package una.ac.cr.sistemaagricola;
 
-import com.finca.vista.VentanaPrincipal;
+import com.finca.vista.PantallaInicio;
 import javafx.application.Application;
+import javafx.stage.Stage;
 
-public class SistemaAgricola {
+public class SistemaAgricola extends Application {
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        new PantallaInicio().mostrar(stage);
+    }
+
     public static void main(String[] args) {
-        Application.launch(VentanaPrincipal.class, args);
+        launch(args);
     }
 }

@@ -32,7 +32,7 @@ public class VentanaPrincipal extends Application {
             crearTabConsultas(),
             crearTabInforme()
         );
-        Scene scene = new Scene(tabPane, 1000, 750);
+        Scene scene = new Scene(tabPane, 1000, 700);
         try {
             scene.getStylesheets().add(getClass().getResource("estilos.css").toExternalForm());
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class VentanaPrincipal extends Application {
         }
         stage.setScene(scene);
         stage.setMinWidth(900);
-        stage.setMinHeight(650);
+        stage.setMinHeight(600);
         stage.show();
     }
     // TAB PARCELAS
@@ -58,10 +58,10 @@ public class VentanaPrincipal extends Application {
         cboEstado.setMaxWidth(Double.MAX_VALUE);
         cboEstado.getStyleClass().add("combo-box");
 
-        Button btnGuardar   = boton("Guardar",    "btn-verde");
-        Button btnModificar = boton("Modificar",  "btn-amarillo");
-        Button btnEliminar  = boton("Eliminar",   "btn-rojo");
-        Button btnLimpiar   = boton("Limpiar",    "btn-gris");
+        Button btnGuardar   = boton("Guardar",   "btn-verde");
+        Button btnModificar = boton("Modificar", "btn-amarillo");
+        Button btnEliminar  = boton("Eliminar",  "btn-rojo");
+        Button btnLimpiar   = boton("Limpiar",   "btn-gris");
         Label lblMsg = new Label();
 
         TableView<Parcela> tabla = new TableView<>();
@@ -72,7 +72,7 @@ public class VentanaPrincipal extends Application {
         agregarColumna(tabla, "Tipo Suelo", "tipoSuelo", 100);
         agregarColumna(tabla, "Estado", "estado", 100);
         tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
-        tabla.setPrefHeight(220);
+        VBox.setVgrow(tabla, Priority.ALWAYS);
         cargarParcelas(tabla);
 
         tabla.getSelectionModel().selectedItemProperty().addListener((obs, old, sel) -> {
@@ -145,16 +145,26 @@ public class VentanaPrincipal extends Application {
 
         HBox botones = new HBox(10, btnGuardar, btnModificar, btnEliminar, btnLimpiar);
         botones.setAlignment(Pos.CENTER_LEFT);
+
+        VBox panelIzquierdo = new VBox(10,
+            encabezado("Gestion de Parcelas", "Registre, edite y elimine parcelas"),
+            tarjeta(grid), botones, lblMsg
+        );
+        panelIzquierdo.setPadding(new Insets(15));
+        panelIzquierdo.setMinWidth(380);
+        panelIzquierdo.setMaxWidth(420);
+
         Label lblRegistros = new Label("Registros existentes:");
         lblRegistros.getStyleClass().add("label-seccion");
+        VBox panelDerecho = new VBox(10, lblRegistros, tabla);
+        panelDerecho.setPadding(new Insets(15));
+        VBox.setVgrow(tabla, Priority.ALWAYS);
+        HBox.setHgrow(panelDerecho, Priority.ALWAYS);
 
-        VBox layout = new VBox(12,
-            encabezado("Gestion de Parcelas", "Registre, edite y elimine las parcelas de la finca"),
-            tarjeta(grid), botones, lblMsg, lblRegistros, tabla
-        );
-        layout.setPadding(new Insets(20));
-        layout.getStyleClass().add("fondo");
-        tab.setContent(new ScrollPane(layout));
+        HBox layoutPrincipal = new HBox(10, panelIzquierdo, panelDerecho);
+        layoutPrincipal.getStyleClass().add("fondo");
+
+        tab.setContent(layoutPrincipal);
         return tab;
     }
     // TAB CULTIVOS
@@ -191,7 +201,7 @@ public class VentanaPrincipal extends Application {
             c.getValue().obtenerDescripcion()));
         tabla.getColumns().add(colDesc);
         tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
-        tabla.setPrefHeight(220);
+        VBox.setVgrow(tabla, Priority.ALWAYS);
         cargarCultivos(tabla);
 
         tabla.getSelectionModel().selectedItemProperty().addListener((obs, old, sel) -> {
@@ -274,16 +284,26 @@ public class VentanaPrincipal extends Application {
         );
 
         HBox botones = new HBox(10, btnGuardar, btnModificar, btnEliminar, btnLimpiar);
+
+        VBox panelIzquierdo = new VBox(10,
+            encabezado("Gestion de Cultivos", "Administre cultivos anuales y perennes"),
+            tarjeta(grid), botones, lblMsg
+        );
+        panelIzquierdo.setPadding(new Insets(15));
+        panelIzquierdo.setMinWidth(380);
+        panelIzquierdo.setMaxWidth(420);
+
         Label lblRegistros = new Label("Registros existentes:");
         lblRegistros.getStyleClass().add("label-seccion");
+        VBox panelDerecho = new VBox(10, lblRegistros, tabla);
+        panelDerecho.setPadding(new Insets(15));
+        VBox.setVgrow(tabla, Priority.ALWAYS);
+        HBox.setHgrow(panelDerecho, Priority.ALWAYS);
 
-        VBox layout = new VBox(12,
-            encabezado("Gestion de Cultivos", "Administre cultivos anuales y perennes"),
-            tarjeta(grid), botones, lblMsg, lblRegistros, tabla
-        );
-        layout.setPadding(new Insets(20));
-        layout.getStyleClass().add("fondo");
-        tab.setContent(new ScrollPane(layout));
+        HBox layoutPrincipal = new HBox(10, panelIzquierdo, panelDerecho);
+        layoutPrincipal.getStyleClass().add("fondo");
+
+        tab.setContent(layoutPrincipal);
         return tab;
     }
     // TAB RESPONSABLES
@@ -327,7 +347,7 @@ public class VentanaPrincipal extends Application {
             c.getValue().obtenerRol()));
         tabla.getColumns().add(colRol);
         tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
-        tabla.setPrefHeight(220);
+        VBox.setVgrow(tabla, Priority.ALWAYS);
         cargarResponsables(tabla);
 
         tabla.getSelectionModel().selectedItemProperty().addListener((obs, old, sel) -> {
@@ -417,16 +437,26 @@ public class VentanaPrincipal extends Application {
         );
 
         HBox botones = new HBox(10, btnGuardar, btnModificar, btnEliminar, btnLimpiar);
+
+        VBox panelIzquierdo = new VBox(10,
+            encabezado("Gestion de Responsables", "Productores y tecnicos agricolas"),
+            tarjeta(grid), botones, lblMsg
+        );
+        panelIzquierdo.setPadding(new Insets(15));
+        panelIzquierdo.setMinWidth(380);
+        panelIzquierdo.setMaxWidth(420);
+
         Label lblRegistros = new Label("Registros existentes:");
         lblRegistros.getStyleClass().add("label-seccion");
+        VBox panelDerecho = new VBox(10, lblRegistros, tabla);
+        panelDerecho.setPadding(new Insets(15));
+        VBox.setVgrow(tabla, Priority.ALWAYS);
+        HBox.setHgrow(panelDerecho, Priority.ALWAYS);
 
-        VBox layout = new VBox(12,
-            encabezado("Gestion de Responsables", "Productores y tecnicos agricolas"),
-            tarjeta(grid), botones, lblMsg, lblRegistros, tabla
-        );
-        layout.setPadding(new Insets(20));
-        layout.getStyleClass().add("fondo");
-        tab.setContent(new ScrollPane(layout));
+        HBox layoutPrincipal = new HBox(10, panelIzquierdo, panelDerecho);
+        layoutPrincipal.getStyleClass().add("fondo");
+
+        tab.setContent(layoutPrincipal);
         return tab;
     }
     // TAB LABORES
@@ -456,11 +486,11 @@ public class VentanaPrincipal extends Application {
             cboResponsable.setItems(FXCollections.observableArrayList(gestor.listarResponsables()));
         } catch (SQLException ex) { mostrarAlerta(ex.getMessage()); }
 
-        Button btnGuardar   = boton("Guardar",        "btn-verde");
-        Button btnModificar = boton("Modificar",      "btn-amarillo");
-        Button btnEliminar  = boton("Eliminar",       "btn-rojo");
-        Button btnLimpiar   = boton("Limpiar",        "btn-gris");
-        Button btnRecargar  = boton("Recargar listas","btn-gris");
+        Button btnGuardar   = boton("Guardar",         "btn-verde");
+        Button btnModificar = boton("Modificar",       "btn-amarillo");
+        Button btnEliminar  = boton("Eliminar",        "btn-rojo");
+        Button btnLimpiar   = boton("Limpiar",         "btn-gris");
+        Button btnRecargar  = boton("Recargar listas", "btn-gris");
         Label lblMsg = new Label();
 
         TableView<LaborAgricola> tabla = new TableView<>();
@@ -479,7 +509,7 @@ public class VentanaPrincipal extends Application {
         agregarColumna(tabla, "Costo", "costoEstimado", 80);
         tabla.getColumns().addAll(colParcela, colCultivo, colResp);
         tabla.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
-        tabla.setPrefHeight(220);
+        VBox.setVgrow(tabla, Priority.ALWAYS);
         cargarLabores(tabla);
 
         tabla.getSelectionModel().selectedItemProperty().addListener((obs, old, sel) -> {
@@ -574,16 +604,26 @@ public class VentanaPrincipal extends Application {
         );
 
         HBox botones = new HBox(10, btnGuardar, btnModificar, btnEliminar, btnLimpiar, btnRecargar);
+
+        VBox panelIzquierdo = new VBox(10,
+            encabezado("Gestion de Labores Agricolas", "Registre y administre las labores"),
+            tarjeta(grid), botones, lblMsg
+        );
+        panelIzquierdo.setPadding(new Insets(15));
+        panelIzquierdo.setMinWidth(380);
+        panelIzquierdo.setMaxWidth(420);
+
         Label lblRegistros = new Label("Registros existentes:");
         lblRegistros.getStyleClass().add("label-seccion");
+        VBox panelDerecho = new VBox(10, lblRegistros, tabla);
+        panelDerecho.setPadding(new Insets(15));
+        VBox.setVgrow(tabla, Priority.ALWAYS);
+        HBox.setHgrow(panelDerecho, Priority.ALWAYS);
 
-        VBox layout = new VBox(12,
-            encabezado("Gestion de Labores Agricolas", "Registre y administre las labores realizadas"),
-            tarjeta(grid), botones, lblMsg, lblRegistros, tabla
-        );
-        layout.setPadding(new Insets(20));
-        layout.getStyleClass().add("fondo");
-        tab.setContent(new ScrollPane(layout));
+        HBox layoutPrincipal = new HBox(10, panelIzquierdo, panelDerecho);
+        layoutPrincipal.getStyleClass().add("fondo");
+
+        tab.setContent(layoutPrincipal);
         return tab;
     }
     // TAB CONSULTAS
@@ -643,7 +683,7 @@ public class VentanaPrincipal extends Application {
         Label lblSeccion = new Label("Seleccione que desea consultar:");
         lblSeccion.getStyleClass().add("label-seccion");
         StackPane panelTabla = new StackPane();
-        panelTabla.setPrefHeight(400);
+        VBox.setVgrow(panelTabla, Priority.ALWAYS);
 
         Button btnParcelas     = boton("Parcelas",     "btn-verde");
         Button btnCultivos     = boton("Cultivos",     "btn-verde");
@@ -700,27 +740,57 @@ public class VentanaPrincipal extends Application {
         );
         layout.setPadding(new Insets(20));
         layout.getStyleClass().add("fondo");
-        tab.setContent(new ScrollPane(layout));
+        VBox.setVgrow(panelTabla, Priority.ALWAYS);
+        tab.setContent(layout);
         return tab;
     }
     // TAB INFORME
     private Tab crearTabInforme() {
         Tab tab = new Tab("Informe");
 
-        Label lblInfo = new Label("Genera un informe en archivo TXT con todas las labores agricolas registradas.");
+        Label lblInfo = new Label("Genera un informe con todas las labores agricolas registradas.");
         lblInfo.setWrapText(true);
         lblInfo.getStyleClass().add("label-seccion");
 
         Button btnTXT = boton("Generar informe TXT", "btn-verde");
         Label lblMsg  = new Label();
 
+        TextArea areaInforme = new TextArea();
+        areaInforme.setEditable(false);
+        areaInforme.setWrapText(true);
+        areaInforme.setPrefHeight(380);
+        areaInforme.setPromptText("El contenido del informe aparecera aqui al generarlo...");
+        areaInforme.getStyleClass().add("area-informe");
+        VBox.setVgrow(areaInforme, Priority.ALWAYS);
+
         btnTXT.setOnAction(e -> {
             try {
                 List<LaborAgricola> labores = gestor.listarLabores();
-                if (labores.isEmpty()) { error(lblMsg, "No hay labores registradas para exportar."); return; }
+                if (labores.isEmpty()) {
+                    error(lblMsg, "No hay labores registradas para exportar.");
+                    areaInforme.clear();
+                    return;
+                }
                 GeneradorInforme.generarTXT(labores, "informe_labores_agricolas.txt");
-                exito(lblMsg, "Informe TXT generado correctamente con " + labores.size() + " registros.");
-            } catch (Exception ex) { error(lblMsg, "Error: " + ex.getMessage()); }
+                StringBuilder sb = new StringBuilder();
+                sb.append("========================================\n");
+                sb.append("   INFORME DE LABORES AGRICOLAS\n");
+                sb.append("========================================\n\n");
+                for (LaborAgricola l : labores) {
+                    sb.append("Codigo:          ").append(l.getCodigo()).append("\n");
+                    sb.append("Fecha:           ").append(l.getFecha()).append("\n");
+                    sb.append("Parcela:         ").append(l.getParcela().getNombre()).append("\n");
+                    sb.append("Cultivo:         ").append(l.getCultivo().getNombre()).append("\n");
+                    sb.append("Responsable:     ").append(l.getResponsable().getNombreCompleto()).append("\n");
+                    sb.append("Tipo de labor:   ").append(l.getTipoLabor()).append("\n");
+                    sb.append("Costo estimado:  ").append(l.getCostoEstimado()).append("\n");
+                    sb.append("----------------------------------------\n");
+                }
+                areaInforme.setText(sb.toString());
+                exito(lblMsg, "Informe generado con " + labores.size() + " registros. Guardado como informe_labores_agricolas.txt");
+            } catch (Exception ex) {
+                error(lblMsg, "Error: " + ex.getMessage());
+            }
         });
 
         VBox tarjetaInfo = new VBox(8,
@@ -735,9 +805,9 @@ public class VentanaPrincipal extends Application {
         );
         tarjetaInfo.getStyleClass().add("tarjeta-info");
 
-        VBox layout = new VBox(15,
+        VBox layout = new VBox(12,
             encabezado("Generacion de Informe", "Exporte las labores agricolas a un archivo TXT"),
-            lblInfo, tarjetaInfo, btnTXT, lblMsg
+            lblInfo, tarjetaInfo, btnTXT, lblMsg, areaInforme
         );
         layout.setPadding(new Insets(20));
         layout.getStyleClass().add("fondo");
@@ -764,7 +834,7 @@ public class VentanaPrincipal extends Application {
         try { tabla.setItems(FXCollections.observableArrayList(gestor.listarLabores())); }
         catch (SQLException e) { mostrarAlerta(e.getMessage()); }
     }
-    //LIMPIEZA
+    // METODOS DE LIMPIEZA
     private void limpiarParcelas(TextField cod, TextField nom, TextField ubi,
             TextField area, TextField suelo, ComboBox<String> cbo, TableView<?> tabla) {
         cod.clear(); cod.setDisable(false); nom.clear(); ubi.clear();
@@ -794,7 +864,7 @@ public class VentanaPrincipal extends Application {
         cboPar.setValue(null); cboCul.setValue(null); cboRes.setValue(null); cboTipo.setValue(null);
         tabla.getSelectionModel().clearSelection();
     }
-    //VISUALES
+    // COMPONENTES VISUALES
     private VBox encabezado(String titulo, String subtitulo) {
         Label lblTitulo = new Label(titulo);
         lblTitulo.getStyleClass().add("encabezado-titulo");
@@ -841,7 +911,7 @@ public class VentanaPrincipal extends Application {
             grid.add(lbl, 0, i / 2);
             javafx.scene.Node nodo = (javafx.scene.Node) pares[i + 1];
             GridPane.setHgrow(nodo, Priority.ALWAYS);
-            nodo.setStyle("-fx-min-width: 260px;");
+            nodo.setStyle("-fx-min-width: 240px;");
             grid.add(nodo, 1, i / 2);
         }
         return grid;
